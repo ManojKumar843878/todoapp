@@ -1,0 +1,174 @@
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+}
+
+
+.overlay{
+background-color:black;
+width:100%;
+height:100%;
+position:absolute;
+top:0;
+left:0;
+z-index:1;
+opacity:0.8;
+display:none;
+}
+.popup{
+  position:absolute;
+  z-index:2;
+  width:20%;
+  top:25%;
+  left:35%;
+  padding:20px;
+  border-radius:20px;
+  color:white;
+  background-color:red;
+  display:none;
+}
+#remove1{
+border-radius: 10px;
+background-color:rgb(125, 125, 214);
+padding:8px;
+text-align: center;
+}
+#remove1:hover{
+  background-color: rgb(5, 5, 69);
+}
+#formid{
+  display:flex;
+  gap: 10px;
+  flex-direction:column;
+}
+#div-box{
+  width:20%;
+  height:35%;
+  top:0;
+  left:30%;
+  padding:40px;
+  margin-left:36%;
+  margin-top: auto;
+  margin-bottom: 10px;
+  background-color:rgba(255, 255, 255, 0.783);
+  border-radius:10px;
+}
+.titl{
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+}
+h2{
+  text-align:center;
+}
+#inputid{
+ padding:10px;
+ border-radius:5px;
+border: 1px solid white;
+}
+
+button {
+    text-align: center;
+    padding:2px;
+    border: none;
+    background: rgb(86, 86, 210);
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #12375e;
+  }
+  #ulitem {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: white;
+  color: black;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+</style>
+
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  </head><body><h1 class="titl">TO DO LIST📝</h1>
+  <link rel="stylesheet" href="To%20Do%20List_files/styletodo.css">
+
+
+<div class="overlay"></div>
+<div class="popup">
+<p>Are You Sure Want To Delete</p>
+<button onclick="removing(event)" id="remove1">Delete</button>
+</div>
+
+  <div id="div-box">
+    <form id="formid">
+  <h2>To Do List📝</h2>
+  <input id="inputid" type="text" placeholder="Enter ur message">
+  <input type="date" id="duedate">
+  <button type="submit">➕ADD</button>
+
+  <ul id="ulitem">
+    <li id="litem">LIST ITEMS
+      <button id="one" onclick="done(event)"> done</button>
+    <button id="two" onclick="alerting()">🗑️ DELETE</button></li>
+    
+  </ul>
+  </form>
+
+<script>
+  var overfun=document.querySelector(".overlay");
+  var popfun=document.querySelector(".popup")
+  let itemToDelete=null;
+var forming=document.getElementById("formid");
+forming.addEventListener("submit",function(event){
+  event.preventDefault();
+    var divbox=document.getElementById("div-box")
+    var duedates=document.getElementById("duedate")
+    const dueDate=duedates.value;
+    var ulitem=document.getElementById("ulitem")
+    var inputval=document.getElementById("inputid");
+    var listitem=document.createElement("li");
+var inpval=inputval.value;
+    listitem.innerHTML=inpval+dueDate+"<button onclick='done(event)'>done<button>"+"<button onclick='alerting(event)'>DELETE</button>"
+    ulitem.append(listitem);
+    divbox.append(ulitem);
+    forming.reset();
+  })
+  
+  function removing(event){
+    alert("removed");
+    if (itemToDelete) {
+      itemToDelete.remove(); 
+      popfun.style.display = "none";
+    overfun.style.display = "none";
+    }}
+function done(event){
+event.target.parentElement.style.textDecoration="line-through";
+}
+function alerting(event){
+    itemToDelete = event.target.parentElement; // store the list item
+    popfun.style.display = "block";
+    overfun.style.display = "block";
+  }
+
+</script>
+
+
+</div></body></html>
