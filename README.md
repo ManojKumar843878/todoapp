@@ -1,1 +1,1 @@
-# todoapp
+his To-Do App is a straightforward task management tool designed to help users stay organized. It allows you to add, edit, mark as complete, and delete tasks with ease. Built with a clean and responsive interface, it's perfect for managing daily to-dos and serves as a great starter project for web development practice.
